@@ -1,0 +1,380 @@
+/* iModa Jr. — minimal editorial style
+   Palette: pink rgb(243,85,170), black, white */
+
+/* Variáveis de cores usadas ao longo do site inteiro */
+:root {
+  --pink: rgb(243, 85, 170);                            /* Rosa principal da identidade visual */
+  --black: #000000;                                     /* Preto principal */
+  --white: #ffffff;                                     /* Branco principal */
+  --gray: #f4f4f4;                                      /* Cinza claro para fundos */
+  --muted: #666666;                                     /* Cinza para textos secundários */
+}
+
+/*Remove margens e espaçamentos padrão do navegador */
+* { 
+  box-sizing: border-box;       /* Faz width e height incluírem padding e border */
+  margin: 0; 
+  padding: 0; 
+}
+
+/* Configurações gerais da página */
+html, body {
+  background-color: var(--white);                                                     /* Fundo branco */
+  color: var(--black);                                                                /* Cor padrão do texto */
+  font-family: "Helvetica Neue", Arial, sans-serif;                                   /* Fonte principal */
+  font-size: 16px;                                                                    /* Tamanho base da fonte */
+  line-height: 1.6;                                                                   /* Espaçamento entre linhas */
+}
+
+/* Configuração dos títulos */
+h1, h2, h3, h4 {
+  font-family: Georgia, "Times New Roman", serif;                                  /* Fonte serifada */
+  font-weight: 400;                                                                /* Peso normal */
+  letter-spacing: -0.01em;                                                         /* Letras levemente mais próximas, contribuindo com a estética */
+  line-height: 1.15;                                                               /* Altura de linha dos títulos */
+}
+
+/* Título principal */
+h1 { 
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  /* Cresce conforme a tela:
+     mínimo 2.5rem;
+     ideal 6vw;
+     máximo 5rem. */
+}
+
+/* Títulos de seção */
+h2 {
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem); 
+  margin-bottom: 1rem; /* Espaço abaixo */
+}
+
+/* Títulos menores */
+h3 {
+  font-size: 1.2rem; margin-bottom: 0.5rem;
+}
+
+/* Parágrafos */
+p { 
+  margin-bottom: 1rem;   /* Espaço abaixo */
+  color: #222;         /* Cinza escuro */
+}
+
+/* Links */
+a {
+   color: var(--black);                     /* Cor do texto */
+   text-decoration: none;                   /* Remove sublinhado padrão */
+   border-bottom: 1px solid transparent;    /* Linha invisível para hover */
+   transition: border-color .2s;            /* Anima mudança da borda */
+  }
+
+/* Efeito ao passar o mouse */
+a:hover {
+   border-color: var(--pink); /* Mostra linha rosa que deixa de ser invisível */
+}
+
+/* Imagens responsivas */
+img { 
+  max-width: 100%;      /* Nunca ultrapassa o tamanho do container que as imagens tão inseridas */
+  display: block;       /* Remove espaços estranhos de imagens inline */
+}
+
+
+
+/* HEADER */
+body > header {
+  position: sticky;                       /* Mantém o header fixado no topo quando a página rola */
+  top: 0;                                 /* Distância do topo para o sticky começar a funcionar */
+  z-index: 10;                             /* Define prioridade de sobreposição. Quanto maior, mais "na frente" o elemento fica. */
+  background: rgba(255,255,255,0.92);
+  border-bottom: 1px solid #eee;
+  padding: 1.2rem 2rem;
+  display: flex;                        /* Organiza os elementos horizontalmente */
+  align-items: center;                  /* Centraliza verticalmente os itens do flex */
+  justify-content: space-between;       /* Coloca logo na esquerda e menu na direita */
+}
+body > header strong {
+  font-family: Georgia, serif;
+  font-size: 1.4rem;
+}
+body > header strong em { color: var(--pink); font-style: normal; }
+nav ul {
+   list-style: none;    /* Remove as bolinhas, bullet-list, da lista */
+   display: flex;       /* Coloca os itens lado a lado */
+   gap: 2rem;           /* Espaçamento entre os links */
+}
+nav a {
+  font-size: 0.85rem; 
+  text-transform: uppercase; 
+}
+main {display: block;}
+section {
+  padding: 5rem 2rem;
+  max-width: 1200px;    /* Limita a largura máxima para não ficar esticado em telas enormes */
+  margin: 0 auto;       /* Centraliza horizontalmente */
+}
+
+
+
+/* HERO */
+section.hero {
+  min-height: 85vh;           /* Ocupa pelo menos 85% da altura da tela */
+  display: flex;
+  flex-direction: column;     /* Organiza os elementos em coluna */
+  justify-content: center;    /* Centraliza verticalmente o conteúdo */
+  align-items: flex-start;    /* Alinha tudo à esquerda */
+  border-bottom: 1px solid #eee;
+}
+section.hero h1 {max-width: 14ch;}  /* Limita a largura do texto usando quantidade de caracteres. "ch" significa aproximadamente a largura de um caractere. Serve para controlar o tamanho visual de textos. */
+section.hero h1 em {
+  color: var(--pink); 
+  font-style: italic;
+}
+section.hero p {
+  font-size: 1.1rem; 
+  max-width: 50ch;    /* Limita a largura do parágrafo para melhorar leitura */
+  margin-top: 1.5rem; 
+  color: var(--muted);
+}
+section.hero small {
+  display: block; 
+  margin-top: 3rem; 
+  font-size: 0.8rem; 
+  text-transform: uppercase;
+}
+
+
+
+/* BANNER */
+figure.banner {
+  margin: 0;
+  background: var(--pink);
+  color: var(--white);
+  padding: 5rem 2rem;
+  text-align: center;
+}
+figure.banner blockquote {
+  font-family: Georgia, serif;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);    /* Texto responsivo: nunca menor que 1.6rem; cresce com a tela usando 3vw; nunca maior que 2.4rem. */
+  font-style: italic;
+  max-width: 26ch;    /* Limita largura em caracteres */
+  margin: 0 auto;
+  line-height: 1.3;
+}
+figure.banner figcaption {
+  margin-top: 1.5rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+
+
+/* CARDS */
+ul.cards {
+  list-style: none;
+  display: grid; /* Cria automaticamente quantas colunas couberem. */
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));  /* Cada coluna terá no mínimo 240px. Se sobrar espaço, divide igualmente. */
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+ul.cards article {
+  background: var(--white);
+  border: 1px solid #e5e5e5;
+  padding: 2rem 1.5rem;
+}
+ul.cards article:hover { border-color: var(--pink); }
+ul.cards article h3 { color: var(--pink); }
+ul.cards article ul { list-style: none; margin-top: 0.5rem; }
+ul.cards article ul li { font-size: 0.9rem; color: var(--muted); padding: 0.15rem 0; }
+
+
+
+/* MURAL DA EQUIPE */
+ul.team {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+ul.team figure { text-align: center; }
+ul.team img {
+  width: 100%;    /* Mantém largura ocupando todo espaço disponível */
+  aspect-ratio: 1;    /* Força imagem a ser quadrada */
+  object-fit: cover;     /* Recorta a imagem sem distorcer */
+  filter: grayscale(100%);    /* Aplica filtro preto e branco */
+  transition: filter .3s;   /* Suaviza a mudança do filtro */
+}
+ul.team figure:hover img { filter: grayscale(0); }    /* Remove o preto e branco quando passa o mouse */
+ul.team figcaption { margin-top: 0.75rem; }
+ul.team figcaption strong { display: block; font-family: Georgia, serif; font-size: 1.05rem; }
+ul.team figcaption small { color: var(--muted); font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; }
+
+
+
+/* STATUS */
+ul.stats {
+  list-style: none;
+  background: var(--black);
+  color: var(--white);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  padding: 4rem 2rem;
+  text-align: center;
+  gap: 2rem;
+}
+ul.stats li strong {
+  display: block;
+  font-family: Georgia, serif;
+  font-size: 3rem;
+  color: var(--pink);
+}
+ul.stats li small { letter-spacing: 0.2em; text-transform: uppercase; font-size: 0.75rem; }
+
+
+
+/* FOOTER */
+body > footer {
+  background: var(--black);
+  color: var(--white);
+  padding: 3rem 2rem;
+  text-align: center;
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+}
+body > footer a { color: var(--pink); border-color: transparent; }
+body > footer ul { list-style: none; display: flex; justify-content: center; gap: 2rem; margin-bottom: 1rem; }
+
+
+
+/* SECTION HEADERS */
+section > header { margin-bottom: 2rem; }
+section > header small {
+  display: block;
+  color: var(--pink);
+  letter-spacing: 0.3em;        /* Espaçamento entre letras */
+  text-transform: uppercase;    /* Converte texto para maiúsculas */
+  font-size: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+
+
+/* CARROSSEL */
+figure.carrossel {
+  margin: 2rem 0;
+  position: relative;   /* Permite posicionar elementos absolutos usando este elemento como referência */
+  overflow: hidden;     /* Esconde imagens que saírem da área visível */
+  background: var(--gray);
+}
+figure.carrossel ul {
+  list-style: none;
+  display: flex;
+  transition: transform .6s ease;   /* Suaviza o movimento do carrossel */
+}
+figure.carrossel ul li { min-width: 100%; }   /* Cada slide ocupa exatamente 100% da largura */
+figure.carrossel ul li img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;    /* Recorta a imagem mantendo proporção */
+}
+figure.carrossel button {
+  position: absolute;             /* Posicionamento livre dentro do carrossel */
+  top: 50%;                       /* Coloca no meio vertical */
+  transform: translateY(-50%);    /* Corrige alinhamento exato para o centro */
+  background: rgba(255,255,255,0.85);
+  border: none;
+  width: 44px;
+  height: 44px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background .2s;
+}
+figure.carrossel button:hover { background: var(--pink); color: var(--white); }
+figure.carrossel button.prev { left: 1rem; }
+figure.carrossel button.next { right: 1rem; }
+figure.carrossel figcaption {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);    /* Corrige o alinhamento horizontal para ficar realmente centralizado */
+  background: rgba(0,0,0,0.6);
+  color: var(--white);
+  padding: 0.4rem 1rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+
+
+/* PORTFOLIO */
+ul.portfolio {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));    /* Grid responsivo automático */
+  gap: 1rem;
+  margin-top: 2rem;
+}
+ul.portfolio figure { position: relative; overflow: hidden; }   /* Esconde partes da imagem ou legenda que ultrapassem o card */
+ul.portfolio img {
+  aspect-ratio: 4/5;  /* Mantém proporção 4:5 independente da imagem original */
+  object-fit: cover;  /* Preenche o espaço sem deformar */
+}
+ul.portfolio figcaption {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;   /* Faz a legenda ficar sobre a imagem */
+  background: linear-gradient(transparent, rgba(0,0,0,0.7));    /* Cria um degradê transparente → preto */
+  color: var(--white);
+  padding: 2rem 1rem 1rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+
+
+/* MOODBOARD */
+ul.moodboard {
+  list-style: none;
+  columns: 4 200px;   /* Layout estilo Pinterest: cria colunas automáticas com largura mínima de 200px */
+  column-gap: 0.75rem;    /* Espaço entre colunas */
+  margin-top: 2rem;
+}
+ul.moodboard li {
+  break-inside: avoid;    /* Impede que uma imagem seja quebrada entre duas colunas */
+  margin-bottom: 0.75rem;
+}
+ul.moodboard img { width: 100%; filter: grayscale(40%); transition: filter .3s; }
+ul.moodboard img:hover { filter: none; }
+
+@media (max-width: 640px) {
+ h1 {
+        font-size: 40px;
+    }
+
+    h2 {
+        font-size: 30px;
+    }
+
+    body > header {
+        padding: 16px;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    nav ul {
+        gap: 16px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    section {
+        padding: 48px 24px;
+    }
+
+    figure.carrossel ul li img {
+        height: 300px;
+    }
+}
