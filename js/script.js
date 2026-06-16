@@ -14,6 +14,16 @@ function initCarrossel(id, captions, interval) { // Cria a inicialização de um
 
     var i = 0; // Guarda o índice atual do item exibido.
 
+    var timer;
+
+    function startTimer() {
+    clearInterval(timer); // cancela o intervalo anterior
+
+    timer = setInterval(function () {
+        go(i + 1);
+    }, interval);
+}
+
     function go(n) { // Atualiza o carrossel para um índice específico.
         i = (n + captions.length) % captions.length; // Mantém o índice dentro dos limites do array.
 
@@ -25,16 +35,20 @@ function initCarrossel(id, captions, interval) { // Cria a inicialização de um
     } // Fecha a função que altera o slide.
 
     prev.addEventListener('click', function () { // Adiciona ação ao botão anterior.
-        go(i - 1); // Volta um item no carrossel.
+        go(i - 1);
+        startTimer(); // Volta um item no carrossel.
     }); // Fecha o evento de clique do botão anterior.
 
     next.addEventListener('click', function () { // Adiciona ação ao botão próximo.
-        go(i + 1); // Avança um item no carrossel.
+        go(i + 1);
+        startTimer(); // Avança um item no carrossel.
     }); // Fecha o evento de clique do botão próximo.
 
-    setInterval(function () { // Define a troca automática dos slides.
-        go(i + 1); // Avança automaticamente para o próximo item.
-    }, interval); // Usa o intervalo informado em milissegundos.
+    go(0);
+    startTimer();
+    //setInterval(function () { // Define a troca automática dos slides.
+        //go(i + 1); // Avança automaticamente para o próximo item.
+    //}, interval); Usa o intervalo informado em milissegundos.
 } // Fecha a função de inicialização do carrossel.
 
 initCarrossel( // Inicializa o carrossel da página inicial.
